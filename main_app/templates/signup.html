@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class="card">
+  <div class="card-content">
+    <h1>
+      <i class="fa-solid fa-cart-flatbed-suitcase fa-lg" style="color: #FCA311;"></i>
+      Sign Up
+    </h1>
+    {% if error_message %}
+      <p class="red-text">{{ error_message }}</p>
+    {% endif %}
+    <form action="" method="post" class="form-container" autocomplete="off">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <button type="submit" class="btn submit">
+        <span>
+          <i class="fa-solid fa-user-plus"></i>
+        </span>
+      </button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

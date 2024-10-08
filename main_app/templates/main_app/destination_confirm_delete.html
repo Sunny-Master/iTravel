@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/destinations/destination-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="card">
+  <div class="card-content">
+    <h1>Confirm Delete</h1>
+    <h2>Are you sure you want to remove {{destination.name}} from your list?</h2>
+    <form action="" method="post" class="form actions">
+      {% csrf_token %}
+      <a href="{% url "destination-detail" destination.id %}" class="btn secondary">
+        <span>
+          <i class="fa-solid fa-circle-arrow-left"></i>
+        </span>
+      </a>
+      <button type="submit" class="btn danger">
+        <span>
+          <i class="fa-solid fa-file-circle-xmark" ></i>
+        </span>
+      </button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

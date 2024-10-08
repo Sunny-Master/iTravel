@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link rel="stylesheet" type="text/css" href="{% static "css/form.css" %}">
+<script defer src="{% static 'js/destination-form.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<section class="card">
+  <div class="card-content">
+    <div>
+      {% if destination %}
+        <h1>
+          <i class="fa-solid fa-pen-to-square fa-lg" style="color: #FCA311;"></i>
+          Edit {{ destination.name }}
+        </h1>
+      {% else %}
+        <h1>
+          <i class="fa-solid fa-file-circle-plus fa-lg" style="color: #FCA311;"></i>
+          Add Destination
+        </h1>
+      {% endif %}
+    </div>
+    <form action="" method="post" class="form-container" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <button type="submit" class="btn submit">
+        <span>
+          <i class="fa-solid fa-file-circle-check"></i>
+        </span>
+      </button>
+    </form>
+  </div>
+</section>
+{% endblock %}

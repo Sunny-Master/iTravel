@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    rel="shortcut icon"
+    type="image/png"
+    href="{% static "images/favicon.svg" %}"
+  >
+  <script 
+		src="https://kit.fontawesome.com/ab7fddb901.js"
+		crossorigin="anonymous"
+	>
+  </script>
+  <title>Travellist</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  {% block head %}
+  {% endblock %}
+</head>
+<body>
+  <header>
+    <div class="header-logo">
+      <a href="/">
+        <i class="fa-solid fa-cart-flatbed-suitcase fa-2xl" style="color: #FCA311;"></i>
+        <h1>Travellist</h1>
+      </a>
+    </div>
+    <nav>
+      {% if user.is_authenticated %}
+        <a href="{% url "destination-index" %}" class="nav-link">{{user.username}}'s Destinations</a>
+        <a href="{% url "destination-create" %}" class="nav-link">Add Destination</a>
+        <form method="post" action="{% url 'logout' %}" >
+          {% csrf_token %}
+          <button type="submit" id="logout">Logout</button>
+        </form>
+      {% else %}
+        <a href="{% url "home" %}" class="nav-link">Login</a>
+        <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
+      {% endif %}  
+    </nav>
+  </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

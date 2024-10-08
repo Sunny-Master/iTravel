@@ -1,0 +1,173 @@
+html {
+  box-sizing: border-box
+}
+
+/* The Universal Selector */
+*, /* All elements*/
+*::before, /* All ::before pseudo-elements */
+*::after { /* All ::after pseudo-elements */
+  /* height & width will now include border & padding by default
+     but can be over-ridden as needed */
+  box-sizing: inherit;
+}
+
+/* resets font size to be 62.5% of the user preference - 
+     in most browser configurations this will be 10px */
+:root {
+  font-size: 62.5%
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 
+    'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  --card-box-shadow: 5px 5px 6px -1px #797878;
+  --text-color: white;
+  --card-border-radius: 10px;
+  --font-l: 1.8rem;
+  --font-reg: 1.6rem;
+  --yellow-shade: #FCA311;
+  --dark-navy: #14213D;
+  --button-bg: #E5E5E5;
+  --warn: rgb(255, 102, 0);
+  --danger: rgb(220, 20, 30);
+  /* background-color: #E5E5E5; */
+  background: url('https://i.imgur.com/FaX1LUV.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo{
+  width: 100%;
+  background-color: var(--dark-navy);
+  display: flex;
+  justify-content: center;
+}
+
+.header-logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav {
+  background-color: var(--yellow-shade);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  box-shadow: var(--card-box-shadow);
+}
+
+nav a {
+  font-size: 1.4rem;
+  margin: 0 2%;
+  color: var(--dark-navy);
+  font-weight: bold;
+}
+
+#logout {
+  font-size: 1.4rem;
+  margin: 0 10%;
+  color: var(--dark-navy);
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+#logout:hover {
+  color: white;
+}
+
+nav a:hover {
+  color: white;
+}
+
+main {
+  margin: 12rem 1rem 2rem 1rem;
+  max-width: 1000px;
+  height: 100%;
+}
+
+.btn {
+  font-size: var(--font-l);
+  padding: 8px 16px;
+  border-radius: 6px;
+  border-width: 2px;
+  border-style: solid;
+  text-decoration: none;
+  background-color: var(--button-bg);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  margin: 1rem;
+  width: 9.5rem;
+  text-align: center;
+}
+
+.secondary, .submit, .warn, .danger {
+  color: var(--yellow-shade);
+  border-color: var(--yellow-shade);
+  background-color: var(--dark-navy);
+
+}
+
+.secondary:hover, .submit:hover {
+  color: var(--dark-navy);
+  background-color: var(--yellow-shade);
+}
+
+.warn:hover {
+  color: var(--button-bg);
+  background-color: var(--warn);
+  border-color: var(--button-bg);
+}
+
+.danger:hover {
+  color: var(--button-bg);
+  background-color: var(--danger);
+  border-color: var(--button-bg);
+}
+
+.warn:hover span, .danger:hover span, .secondary:hover span, .submit:hover span {
+  display: none;
+}
+
+.warn:hover::before {
+  content: "Edit";
+}
+
+.danger:hover::before {
+  content: "Delete";
+}
+
+.secondary:hover::before {
+  content: "Back";
+}
+
+.submit:hover::before {
+  content: "Submit";
+}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/destinations/destination-detail.css' %}"
+/>
+<script defer src="{% static 'js/destination-detail.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<section class="card-container">
+  <section class="card">
+    <div class="card-content">
+      <h1>
+        {% comment %} <img src={{ destination.country.flag }}/> {% endcomment %}
+        {{ destination.name }}
+        {% comment %} <img src={{ destination.country.flag }}/> {% endcomment %}
+      </h1>
+      <div class="detail-container">
+        <div class="img-container" id="destination-image">
+          <img 
+          src="
+            {% if destination.image_url %} 
+              {{ destination.image_url }} 
+            {% else %}
+              https://loremflickr.com/1200/900/{{destination.country}}
+            {% endif %}" 
+          alt="Image for {{destination.name}}"
+          >
+        </div>
+        <div class="second-half">
+          <div class="card-data">
+            <label>Type </label>
+            <h3>{{ destination.get_type_display }}</h3>
+          </div>
+          <div class="card-data">
+            <label>Location </label>
+            <h3>
+              {{ destination.city }}, {{ destination.country }} 
+            </h3>
+          </div>
+          <div class="card-data">
+            <label>Comment </label>
+            <h3>Date Visited: {{destination.date}} // {{ destination.comment }}</h3>
+          </div>
+          <div class="card-data">
+            <label>Rating </label>
+            <h3>
+              {% for i in "0123456789" %}
+                {% if forloop.counter <= destination.rating %}
+                  <span class="golden">★</span>
+                {% else %}
+                  <span class="gray">★</span>
+                {% endif %}
+              {% endfor %}
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <a href="{% url "destination-update" destination.id %}" class="btn warn">
+          <span>
+            <i class="fa-solid fa-file-pen" ></i>
+          </span>
+        </a>
+        <a href="{% url "destination-delete" destination.id %}" class="btn danger">
+          <span>
+            <i class="fa-solid fa-file-circle-xmark" ></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section id="screen-overlay">
+  <img 
+    src="
+      {% if destination.image.url %} 
+        {{ destination.image.url }} 
+      {% else %}
+        https://loremflickr.com/320/240/{{destination.country}}
+      {% endif %}" 
+    alt="Image for {{destination.name}}"
+    class="image-overlay"
+  >
+</section>
+
+{% endblock %}

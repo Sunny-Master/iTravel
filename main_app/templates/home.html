@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class="card">
+  <div class="card-content">
+    <h1>Hello Traveller!!</h1>
+    <h1>Travellist is an app for <em>Travellers<em> to save the details of the visited places/destinations and to come back to it in future to cherish the memories or just for referencing their experience by checking their own comments and rating.</h1>
+  </div>
+</section>
+{% if not user.is_authenticated %}
+  <section class="card">
+    <div class="card-content">
+      <h1>
+        <i class="fa-solid fa-cart-flatbed-suitcase fa-lg" style="color: #FCA311;"></i>
+        Login
+      </h1>
+      <form action="{% url "home" %}" method="post" class="form-container">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit" class="btn submit">
+          <span>
+            Login
+          </span>
+        </button>
+      </form>
+    </div>
+  </section>
+{% endif %}
+
+
+
+{% endblock %}

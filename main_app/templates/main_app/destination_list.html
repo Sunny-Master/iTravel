@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/destinations/destination-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="card-container">
+  {% for destination in destination_list %}
+    <a href="{% url "destination-detail" destination.id %}">
+      <div 
+        class="card" 
+        style="background-image: url(
+          {% if destination.image_url %} 
+            {{ destination.image_url }} 
+          {% else %}
+            "https://placehold.co/600x400@2x.png"
+          {% endif %}
+        )"
+      >
+        <div class="card-content" >
+          <h2>{{ destination.name }}</h2>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+</section>
+
+{% endblock %}
