@@ -16,9 +16,9 @@
   <section class="card">
     <div class="card-content">
       <h1>
-        {% comment %} <img src={{ destination.country.flag }}/> {% endcomment %}
+        <img src={{ destination.country.flag }}/>
         {{ destination.name }}
-        {% comment %} <img src={{ destination.country.flag }}/> {% endcomment %}
+        <img src={{ destination.country.flag }}/>
       </h1>
       <div class="detail-container">
         <div class="img-container" id="destination-image">
@@ -27,7 +27,7 @@
             {% if destination.image_url %} 
               {{ destination.image_url }} 
             {% else %}
-              https://loremflickr.com/1200/900/{{destination.country}}
+              https://loremflickr.com/1200/900/{{destination.country.name}}
             {% endif %}" 
           alt="Image for {{destination.name}}"
           >
@@ -40,7 +40,7 @@
           <div class="card-data">
             <label>Location </label>
             <h3>
-              {{ destination.city }}, {{ destination.country }} 
+              {{ destination.city }}, {{ destination.country.name }} 
             </h3>
           </div>
           <div class="card-data">
@@ -83,7 +83,7 @@
       {% if destination.image_url %} 
         {{ destination.image_url }} 
       {% else %}
-        https://loremflickr.com/320/240/{{destination.country}}
+        https://loremflickr.com/320/240/{{destination.country.name}}
       {% endif %}" 
     alt="Image for {{destination.name}}"
     class="image-overlay"
