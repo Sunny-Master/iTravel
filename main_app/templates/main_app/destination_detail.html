@@ -80,8 +80,8 @@
 <section id="screen-overlay">
   <img 
     src="
-      {% if destination.image.url %} 
-        {{ destination.image.url }} 
+      {% if destination.image_url %} 
+        {{ destination.image_url }} 
       {% else %}
         https://loremflickr.com/320/240/{{destination.country}}
       {% endif %}" 
