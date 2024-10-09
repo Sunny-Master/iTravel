@@ -1,4 +1,4 @@
-# Travellist
+# Travellist 
 <a href="#"><img src="https://i.imgur.com/TXQhIEv.jpg"/></a>
 
 ## Overview ✨ 
@@ -15,6 +15,7 @@ Click the link below to open "Travellist" in your web browser, and "Sign up" to 
 ### Planning 🎨 
 
 * [Trello Board](https://trello.com/b/10eaujXm/travellist)
+> This repository is directly based on my [Travellist project](https://github.com/Sunny-Master/travellist), but I did not use Docker for production. Instead, I installed Django and all other supporting libraries locally.
 
 ## Technologies used ⚙️
 
