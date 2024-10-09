@@ -114,32 +114,19 @@ h3 {
   z-index: 2;
 }
 
-.file-upload input {
-  /* margin-left: 1rem; */
+form input {
   color: var(--yellow-shade);
-  width: 70%;
-  position: absolute;
-  left: 15%;
+  width: 100%;
   z-index: 0;
+  position: relative;
+  left: -11%;
 }
 
 .file-upload label {
-  font-size: 1.6rem;
-  font-weight: bold;
-  font-family: inherit;
-  padding: 8px 16px;
-  margin: 1rem;
-  border-radius: 6px;
-  border-width: 2px;
-  border-style: solid;
   color: var(--yellow-shade);
   border-color: var(--yellow-shade);
   background-color: var(--dark-navy);
-  cursor: pointer;
-  width: 9.5rem;
   z-index: 1;
-  text-align: center;
-  text-decoration: none;
 }
 
 .file-upload label:hover {
@@ -157,4 +144,10 @@ h3 {
 
 input::file-selector-button {
   opacity: 0;
+}
+
+@media screen and (max-width: 500px) {
+  form input {
+    left: -16%;
+  }
 }
