@@ -31,9 +31,9 @@ class Destination(models.Model):
   date = models.DateField('Visit Date', default=date.today)
   comment = models.TextField(max_length=250)
   rating = models.IntegerField(default=1, choices=[(i, str(i)) for i in range(1, 11)])
-  image_url = models.URLField(
+  image_url = models.CharField(
     'Image URL',
-    max_length=200,
+    max_length=250,
     blank=True,
     null=True
   )

@@ -32,6 +32,24 @@
           alt="Image for {{destination.name}}"
           >
         </div>
+        <form 
+          action="{% url 'edit-image' destination.id %}"
+          enctype="multipart/form-data"
+          method="POST"
+          id="image-upload"
+        >
+          {% csrf_token %}
+          <div class="file-upload">
+            <label for="file-input">
+              <span>
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <i class="fa-solid fa-image"></i>
+              </span>
+            </label>
+            <input type="file" name="image-file" id="file-input">
+            <button type="submit" class="btn submit"><span>Upload</span></button>
+          </div>
+        </form>
         <div class="second-half">
           <div class="card-data">
             <label>Type </label>

@@ -9,4 +9,5 @@ urlpatterns = [
   path('destinations/<int:pk>/update/', views.DestinationUpdate.as_view(), name='destination-update'),
   path('destinations/<int:pk>/delete/', views.DestinationDelete.as_view(), name='destination-delete'),
   path('accounts/signup/', views.signup, name='signup'),
+  path('destinations/<int:destination_id>/edit-image/', views.edit_image, name='edit-image')
 ]
