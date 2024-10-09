@@ -6,6 +6,36 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+import uuid
+import boto3
+
+# Constant variables
+s3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
+BUCKET = 'sunny-master-travellist'
+
+# Edit photo
+def edit_image(request, destination_id):
+  # image-file will be the "name" attribute on the <input type="file">
+  image_file = request.FILES.get('image-file', None)
+  destination = Destination.objects.get(id=destination_id)
+  if image_file:
+    s3 = boto3.client('s3')
+    # need a unique "key" for S3 / needs image file extension too
+		# uuid.uuid4().hex generates a random hexadecimal Universally Unique Identifier
+    # Add on the file extension using image_file.name[image_file.name.rfind('.'):]
+    key = uuid.uuid4().hex + image_file.name[image_file.name.rfind('.'):]
+    try:
+      s3.upload_fileobj(image_file, BUCKET, key)
+      #buuild the full url string
+      url = f"{s3_BASE_URL}{BUCKET}/{key}"
+      if destination.image_url.split('/')[2] == 's3.us-east-2.amazonaws.com':
+        old_key = destination.image_url.split('/')[-1]
+        s3.delete_object(Bucket=BUCKET, Key=old_key)
+      destination.image_url = url
+      destination.save()
+    except Exception as err:
+      print('An error occurred uploading file to S3: %s' % err)
+  return redirect(f"/destinations/{destination_id}")
 
 # Sign Up
 def signup(request):
@@ -48,7 +78,7 @@ class DestinationCreate(LoginRequiredMixin, CreateView):
   
 class DestinationUpdate(LoginRequiredMixin, UpdateView):
   model = Destination
-  fields = ['country', 'city', 'date', 'comment', 'rating', 'image_url']
+  fields = ['country', 'city', 'date', 'comment', 'rating']
 
 class DestinationDelete(LoginRequiredMixin, DeleteView):
   model = Destination

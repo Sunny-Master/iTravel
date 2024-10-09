@@ -15,7 +15,7 @@ Click the link below to open "Travellist" in your web browser, and "Sign up" to 
 ### Planning 🎨 
 
 * [Trello Board](https://trello.com/b/10eaujXm/travellist)
-> This repository is directly based on my [Travellist project](https://github.com/Sunny-Master/travellist), but I did not use Docker for production. Instead, I installed Django and all other supporting libraries locally.
+> This repository is directly based on my [Travellist project](https://github.com/Sunny-Master/travellist), but I did not use Docker for production. Instead, I installed Django and all other supporting libraries locally and used AWS S3 Bucket instead of Cloudinary for photo upload.
 
 ## Technologies used ⚙️
 
@@ -28,12 +28,13 @@ Click the link below to open "Travellist" in your web browser, and "Sign up" to 
 ![Git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 ![HEROKU](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
 
 ## Ice Box 🧊 
 
-- [ ] Option to select country name from a drop down list
-- [ ] Upload an image for the destination instead of providing image URL
+- [x] Option to select country name from a drop down list
+- [x] Upload an image for the destination instead of providing image URL
 - [ ] Golden-star rating for destinations 
 - [ ] Option to create a want-to-go-places list
 - [ ] Upload multiple images with option to delete any uploaded image 

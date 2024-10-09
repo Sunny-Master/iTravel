@@ -96,3 +96,65 @@ h3 {
 .gray {
   color: lightgray;
 }
+
+#image-upload {
+  padding: 1rem 0 0 0;
+}
+
+.file-upload {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-upload button{
+  margin-top: 0;
+  margin-bottom: 0;
+  z-index: 2;
+}
+
+.file-upload input {
+  /* margin-left: 1rem; */
+  color: var(--yellow-shade);
+  width: 70%;
+  position: absolute;
+  left: 15%;
+  z-index: 0;
+}
+
+.file-upload label {
+  font-size: 1.6rem;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 8px 16px;
+  margin: 1rem;
+  border-radius: 6px;
+  border-width: 2px;
+  border-style: solid;
+  color: var(--yellow-shade);
+  border-color: var(--yellow-shade);
+  background-color: var(--dark-navy);
+  cursor: pointer;
+  width: 9.5rem;
+  z-index: 1;
+  text-align: center;
+  text-decoration: none;
+}
+
+.file-upload label:hover {
+  color: var(--dark-navy);
+  background-color: var(--yellow-shade);
+}
+
+.file-upload label:hover span {
+  display: none;
+}
+
+.file-upload label:hover::before {
+  content: "Choose";
+}
+
+input::file-selector-button {
+  opacity: 0;
+}
