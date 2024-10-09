@@ -40,15 +40,15 @@
         >
           {% csrf_token %}
           <div class="file-upload">
-            <label for="file-input">
+            <label for="file-input" class="btn">
               <span>
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-                <i class="fa-solid fa-image"></i>
+                {% comment %} <i class="fa-solid fa-cloud-arrow-up"></i> {% endcomment %}
+                <i class="fa-regular fa-file-image"></i>
               </span>
             </label>
-            <input type="file" name="image-file" id="file-input">
             <button type="submit" class="btn submit"><span>Upload</span></button>
           </div>
+          <input type="file" name="image-file" id="file-input">
         </form>
         <div class="second-half">
           <div class="card-data">
